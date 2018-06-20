@@ -24,7 +24,7 @@ type Scheduler struct {
 }
 
 func (s Scheduler) Run() {
-	s.slackBot.Say("Someone started me. I'll keep you posted about matches highlights.")
+	//s.slackBot.Say("Someone started me. I'll keep you posted about matches highlights.")
 
 	previousIntervalMatch := wc2018.Match{}
 	firstPollingInterval := true
@@ -42,7 +42,7 @@ func (s Scheduler) Run() {
 
 			if firstPollingInterval {
 				firstPollingInterval = false
-				s.slackBot.Say(currentMatch.Summary())
+				//s.slackBot.Say(currentMatch.Summary())
 			} else {
 				somethingHappened, highlights := currentMatch.WhatHappenedSince(previousIntervalMatch); if somethingHappened {
 					for _, h := range highlights {

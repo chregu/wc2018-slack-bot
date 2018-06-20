@@ -11,7 +11,7 @@ import (
 )
 
 type Config struct {
-	PollingInterval time.Duration `env:"WC2018_POLLING_INTERVAL" envDefault:"10s"`
+	PollingInterval time.Duration `env:"WC2018_POLLING_INTERVAL" envDefault:"31s"`
 	CurrentMatchThreshold time.Duration `env:"WC2018_CURRENT_MATCH_THRESHOLD" envDefault:"20s"`
 	SlackToken string `env:"WC2018_SLACK_TOKEN,required"`
 	SlackChannel string `env:"WC2018_SLACK_CHANNEL,required"`

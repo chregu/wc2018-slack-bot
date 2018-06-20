@@ -56,12 +56,23 @@ func (m Match) WhatHappenedSince(lastMatchData Match) (bool, Highlights) {
 
 	for _, e := range m.HomeTeamEvents {
 		if !lastMatchData.HomeTeamEvents.Contains(e) {
-			highlights = append(highlights, eventToHighlight(e, m))
+			switch e.TypeOfEvent {
+			case "goal", "goal-penalty":
+			case "goal-own":
+			case "red-card":
+				highlights = append(highlights, eventToHighlight(e, m))
+			}
+
 		}
 	}
 	for _, e := range m.AwayTeamEvents {
 		if !lastMatchData.AwayTeamEvents.Contains(e) {
-			highlights = append(highlights, eventToHighlight(e, m))
+			switch e.TypeOfEvent {
+			case "goal", "goal-penalty":
+			case "goal-own":
+			case "red-card":
+				highlights = append(highlights, eventToHighlight(e, m))
+			}
 		}
 	}
 
