@@ -57,9 +57,7 @@ func (m Match) WhatHappenedSince(lastMatchData Match) (bool, Highlights) {
 	for _, e := range m.HomeTeamEvents {
 		if !lastMatchData.HomeTeamEvents.Contains(e) {
 			switch e.TypeOfEvent {
-			case "goal", "goal-penalty":
-			case "goal-own":
-			case "red-card":
+			case "goal", "goal-penalty", "goal-own", "red-card":
 				highlights = append(highlights, eventToHighlight(e, m))
 			}
 
@@ -68,21 +66,21 @@ func (m Match) WhatHappenedSince(lastMatchData Match) (bool, Highlights) {
 	for _, e := range m.AwayTeamEvents {
 		if !lastMatchData.AwayTeamEvents.Contains(e) {
 			switch e.TypeOfEvent {
-			case "goal", "goal-penalty":
-			case "goal-own":
-			case "red-card":
+			case "goal", "goal-penalty", "goal-own", "red-card":
 				highlights = append(highlights, eventToHighlight(e, m))
 			}
 		}
 	}
 
 	// Half time events
+	/*
 	if lastMatchData.Time != "half-time" && m.Time == "half-time" {
 		highlights = append(highlights, FirstHalfHasEnded{m})
 	}
 	if lastMatchData.Time == "half-time" && m.Time != "half-time" {
 		highlights = append(highlights, SecondHalfHasStarted{m})
 	}
+	*/
 
 	// Match has ended
 	if (!cmp.Equal(lastMatchData, NoCurrentMatch) && lastMatchData.Status != "completed") &&
